@@ -28,8 +28,8 @@ Once @StoredModel@ has a reference to the managedObjectContext, all subclasses o
 
 To instantiate a new Dog object => @Dog *dog = [Dog new]@
 To save a dog                   => @[dog save]@
-To find a dog by name           => <pre>[Dog findFirst: @"name = 'Spot'"]</pre>
-To find all dogs by name        => <pre>[Dog find: @"name = 'Spot'"]</pre>
+To find a dog by name           => @Dog *dog = [Dog findFirst:&#64;"name = 'Spot'"]@
+To find all dogs by name        => @NSMutableArray *dogs = [Dog find:&#64;"name = 'Spot'"]@
 To count all dogs               => @[Dog count]@
 To destroy a dog                => @[dog destroy]@
 
