@@ -64,6 +64,7 @@
 			B846500411348E99002E3AE6 /* PBXBookmark */ = B846500411348E99002E3AE6 /* PBXBookmark */;
 			B846500511348E99002E3AE6 /* PBXTextBookmark */ = B846500511348E99002E3AE6 /* PBXTextBookmark */;
 			B846500C11348EE2002E3AE6 /* PBXTextBookmark */ = B846500C11348EE2002E3AE6 /* PBXTextBookmark */;
+			B8465015113494E0002E3AE6 /* PBXTextBookmark */ = B8465015113494E0002E3AE6 /* PBXTextBookmark */;
 		};
 		sourceControlManager = B8464FB311348DBD002E3AE6 /* Source Control */;
 		userBuildSettings = {
@@ -176,6 +177,16 @@
 		vrLoc = 0;
 	};
 	B846500C11348EE2002E3AE6 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = B8464FE311348E12002E3AE6 /* StoredModelTest.m */;
+		name = "StoredModelTest.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1029;
+		vrLoc = 0;
+	};
+	B8465015113494E0002E3AE6 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = B8464FE311348E12002E3AE6 /* StoredModelTest.m */;
 		name = "StoredModelTest.m: 1";

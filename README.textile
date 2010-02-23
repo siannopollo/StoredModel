@@ -1,3 +1,44 @@
-h2. StoredModel
+h1. StoredModel
 
-A friendlier interface for using CoreData in a Cocoa application. Borrows mostly from easy-to-use syntax in Rails ActiveRecord library.
+A friendlier interface for using CoreData in a Cocoa application. Borrows mostly from easy-to-use syntax in Rails' ActiveRecord library.
+
+h3. Why?
+
+Because I looked at all the example code for using CoreData and thought there had to be a better way of saving data than passing a stupid ManagedObjectContext around my whole application. Turns out, there is! This library greatly reduces the verbosity of working with NSManagedObjects, and should be pretty familiar to anyone who has used Ruby on Rails.
+
+h3. Installation
+
+This can be done a couple of ways. The first is really simple, and just requires that you pull the StoredModel.h/m files into your project (@git clone git://github.com/siannopollo/StoredModel.git && cp StoredModel.* /path/to/your/project@). The other way is to link to the library. I haven't figured that one out, but I'll be sure to include it here if/when I do.
+
+h3. Usage
+
+Most example code has a ManagedObjectContext created in the application delegate, and that is then passed to a root view controller so that thing can pass the context around like a joint at a Snoop Dogg concert. Instead of that, you need only deal with the managedObjectContext *once*. Your code in your application delegate should look something like this:
+
+<pre>
+- (void)applicationDidFinishLaunching:(UIApplication *)application {
+  ... // controller setup
+  
+  [StoredModel setContext:self.managedObjectContext];
+  
+  ... // keying up the window
+}
+</pre>
+
+Once @StoredModel@ has a reference to the managedObjectContext, all subclasses of @StoredModel@ will have access to that same context. So let's say you have a Dog class.
+
+To instantiate a new Dog object => @Dog *dog = [Dog new]@
+To save a dog                   => @[dog save]@
+To find a dog by name           => @Dog *dog = [Dog findFirst:@"name = '%@%'", @"Spot"]@
+To find all dogs by name        => @Dog *dog = [Dog find:@"name = '%@%'", @"Spot"]@
+To count all dogs               => @[Dog count]@
+To destroy a dog                => @[dog destroy]@
+
+You can look at the tests for other use cases.
+
+h3. Contribution
+
+Pull requests are welcomed and encouraged.
+
+h3. License
+
+See the LICENSE.
