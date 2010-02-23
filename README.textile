@@ -1,0 +1,3 @@
+h2. StoredModel
+
+A friendlier interface for using CoreData in a Cocoa application. Borrows mostly from easy-to-use syntax in Rails ActiveRecord library.
