@@ -22,7 +22,7 @@ You should now be able to @#import "StoredModel.h"@ into any of your project fil
 
 h3. Usage
 
-Most example code has a ManagedObjectContext created in the application delegate, and that is then passed to a root view controller so that thing can pass the context around like a joint at a Snoop Dogg concert. Instead of that, you need only deal with the managedObjectContext *once*. Your code in your application delegate should look something like this:
+Most CoreData example code has a ManagedObjectContext created in the application delegate, and that is then passed to a root view controller so that thing can pass the context around like a joint at a Snoop Dogg concert. Instead of that, you need only deal with the managedObjectContext *once*. Your code in your application delegate should look something like this:
 
 <pre>
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
