@@ -8,7 +8,17 @@ Because I looked at all the example code for using CoreData and thought there ha
 
 h3. Installation
 
-This can be done a couple of ways. The first is really simple, and just requires that you pull the StoredModel.h/m files into your project (@git clone git://github.com/siannopollo/StoredModel.git && cp StoredModel.* /path/to/your/project@). The other way is to link to the library. I haven't figured that one out, but I'll be sure to include it here if/when I do.
+This can be done a couple of ways. The first is really simple, and just requires that you pull the StoredModel.h/m files into your project (@git clone git://github.com/siannopollo/StoredModel.git && cp StoredModel.* /path/to/your/project@).
+
+The other way is to link against the static library. This is a multipart process, so just bear with me:
+
+# cd into you project directory
+# run @git clone git://github.com/siannopollo/StoredModel.git@
+# In Xcode, drag the StoredModel.xcodeproj file into the root of your project to link to the StoredModel project. You will now have a libStoredModel.a library for your linking pleasure.
+# Right click on your target(s) and click *Get Info*. In the General tab, click "+" under Direct Depenedencies and add the StoredModel dependency and click "Add Target". Then click "+" under Linked Libraries and click "Add Other...". Navigate to your/project/directory/StoredModel/build/Release-iphonesimulator, choose libStoredModel.a and click "Add".
+# Now that you are linked to the StoredModel library, you still need to tell Xcode where to find the StoredModel.h file. Right click on your target(s) again and click *Get Info*. Under the "Build" tab type "header search" in the search box. Double click on the field that says *Header Search Paths*. Add the following as a new path: @${PROJECT_DIR}/StoredModel/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include@.
+
+You should now be able to @#import "StoredModel.h"@ into any of your project files and use the StoredModel class.
 
 h3. Usage
 
