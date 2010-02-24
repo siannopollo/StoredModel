@@ -18,6 +18,8 @@ The other way is to link against the static library. This is a multipart process
 # Right click on your target(s) and click *Get Info*. In the General tab, click "+" under Direct Depenedencies and add the StoredModel dependency and click "Add Target". Then click "+" under Linked Libraries and click "Add Other...". Navigate to your/project/directory/StoredModel/build/Release-iphonesimulator, choose libStoredModel.a and click "Add".
 # Now that you are linked to the StoredModel library, you still need to tell Xcode where to find the StoredModel.h file. Right click on your target(s) again and click *Get Info*. Under the "Build" tab type "header search" in the search box. Double click on the field that says *Header Search Paths*. Add the following as a new path: @${PROJECT_DIR}/StoredModel/build/${BUILD_STYLE}-${PLATFORM_NAME}/usr/local/include@.
 
+If you got lost at any point during that, have a look at this "more visual tutorial":http://www.amateurinmotion.com/articles/2009/02/08/creating-a-static-library-for-iphone.html.
+
 You should now be able to @#import "StoredModel.h"@ into any of your project files and use the StoredModel class.
 
 h3. Usage
