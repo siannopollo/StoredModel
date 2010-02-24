@@ -15,7 +15,7 @@
 		B8464FE911348E2B002E3AE6 /* Dog.m in Sources */ = {isa = PBXBuildFile; fileRef = B8464FE711348E2B002E3AE6 /* Dog.m */; };
 		B8464FEA11348E2B002E3AE6 /* StoredModel.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = B8464FE811348E2B002E3AE6 /* StoredModel.xcdatamodel */; };
 		B8464FED11348E35002E3AE6 /* StoredModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B8464FEC11348E35002E3AE6 /* StoredModel.m */; };
-		B8464FEE11348E35002E3AE6 /* StoredModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B8464FEB11348E35002E3AE6 /* StoredModel.h */; };
+		B8464FEE11348E35002E3AE6 /* StoredModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B8464FEB11348E35002E3AE6 /* StoredModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B8464FEF11348E35002E3AE6 /* StoredModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B8464FEC11348E35002E3AE6 /* StoredModel.m */; };
 		B8464FF711348E6A002E3AE6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8464FC011348DEF002E3AE6 /* CoreData.framework */; };
 		B8464FF811348E6E002E3AE6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
