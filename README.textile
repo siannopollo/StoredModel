@@ -12,7 +12,7 @@ This can be done a couple of ways. The first is really simple, and just requires
 
 The other way is to link against the static library. This is a multipart process, so just bear with me:
 
-# cd into you project directory
+# cd into your project directory
 # run @git clone git://github.com/siannopollo/StoredModel.git@
 # In Xcode, drag the StoredModel.xcodeproj file into the root of your project to link to the StoredModel project. You will now have a libStoredModel.a library for your linking pleasure.
 # Right click on your target(s) and click *Get Info*. In the General tab, click "+" under Direct Depenedencies and add the StoredModel dependency and click "Add Target". Then click "+" under Linked Libraries and click "Add Other...". Navigate to your/project/directory/StoredModel/build/Release-iphonesimulator, choose libStoredModel.a and click "Add".
