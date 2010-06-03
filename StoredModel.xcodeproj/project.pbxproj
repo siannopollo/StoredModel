@@ -257,6 +257,7 @@
 				GCC_PREFIX_HEADER = StoredModel_Prefix.pch;
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = StoredModel;
+				VALID_ARCHS = "i386 x86_64 ppc64 ppc armv6 armv7";
 			};
 			name = Debug;
 		};
@@ -271,6 +272,7 @@
 				GCC_PREFIX_HEADER = StoredModel_Prefix.pch;
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = StoredModel;
+				VALID_ARCHS = "i386 x86_64 ppc64 ppc armv6 armv7";
 			};
 			name = Release;
 		};
