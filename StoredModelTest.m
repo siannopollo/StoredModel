@@ -14,8 +14,9 @@
   context = [[NSManagedObjectContext alloc] init];
   [context setPersistentStoreCoordinator:coordinator];
   
-  NSURL *storeUrl = [NSURL fileURLWithPath: [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]
-                                             stringByAppendingPathComponent: @"memory_test.sqlite"]];
+  NSString *basePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]
+                        stringByDeletingLastPathComponent];
+  NSURL *storeUrl = [NSURL fileURLWithPath:[basePath stringByAppendingPathComponent: @"User/Documents/test.sqlite"]];
 	
   NSError *error = nil;
   [[NSFileManager defaultManager] removeItemAtPath:storeUrl.path error:&error];

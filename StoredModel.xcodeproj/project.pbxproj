@@ -328,6 +328,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = Tests;
+				SDKROOT = iphoneos4.0;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -356,6 +357,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = Tests;
+				SDKROOT = iphoneos4.0;
 				WRAPPER_EXTENSION = octest;
 				ZERO_LINK = NO;
 			};
