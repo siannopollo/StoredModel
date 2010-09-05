@@ -51,3 +51,15 @@ static NSManagedObjectContext *storedModelContext = nil;
 - (void)save;
 - (void)destroy;
 @end
+
+// Doing this because NSPredicate does some munging of dates
+// that [NSString stringWithFormat:] does not
+@interface NSDate (QueryFormat)
+- (NSString *)queryFormat;
+@end
+
+@implementation NSDate (QueryFormat)
+- (NSString *)queryFormat {
+  return [NSString stringWithFormat:@"CAST(%f, \"NSDate\")", [self timeIntervalSinceReferenceDate]];
+}
+@end

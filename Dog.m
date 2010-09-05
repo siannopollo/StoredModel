@@ -6,6 +6,6 @@
 
 @implementation Dog 
 
-@dynamic name;
+@dynamic name, createdAt;
 
 @end

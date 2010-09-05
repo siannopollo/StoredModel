@@ -7,6 +7,7 @@
 @implementation DogTest
 - (void)setUp {
   [super setUp];
+  
   [Dog deleteAll];
   dog = [Dog new];
   dog.name = @"Wishbone";
@@ -73,5 +74,26 @@
   STAssertEquals(1, [[Dog count] intValue], @"");
   [dog destroy];
   STAssertEquals(0, [[Dog count] intValue], @"");
+}
+
+- (void)testDateQuerying {
+  NSDate *oneDayAgo = [NSDate dateWithTimeIntervalSinceNow:-86400];
+  NSDate *twoDaysAgo = [NSDate dateWithTimeIntervalSinceNow:-86400*2];
+  
+  [Dog deleteAll];
+  dog = [Dog new];
+  dog.name = @"Wishbone";
+  dog.createdAt = oneDayAgo;
+  Dog *otherDog = [Dog new];
+  otherDog.name = @"Fluffy";
+  otherDog.createdAt = twoDaysAgo;
+  
+  [dog save]; [otherDog save];
+  
+  NSMutableArray *dogs;
+  dogs = [Dog find:@"createdAt > %@", [oneDayAgo queryFormat]];
+  STAssertTrue([dogs count] == 0, @"");
+  dogs = [Dog find:@"createdAt > %@", [twoDaysAgo queryFormat]];
+  STAssertTrue(1 == [dogs count], @"");
 }
 @end
