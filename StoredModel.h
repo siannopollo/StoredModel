@@ -45,6 +45,7 @@ static NSManagedObjectContext *storedModelContext = nil;
 + (NSArray *)_sortDescriptorsFromOrderString:(NSString *)orderString;
 
 + (id)new;
++(id)new:(NSDictionary *)dictionary;
 
 #pragma mark -
 #pragma mark Instance methods

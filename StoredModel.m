@@ -27,6 +27,15 @@
   return [NSEntityDescription insertNewObjectForEntityForName:[self name] inManagedObjectContext:[self context]];
 }
 
++ (id)new:(NSDictionary *)dictionary {
+  id instance = [self new];
+  NSString *propertyName;
+  for (propertyName in dictionary) {
+    [instance setValue:[dictionary objectForKey:propertyName] forKey:propertyName];
+  }
+  return instance;
+}
+
 // Order can either be something like @"order" or @"order desc"
 + (NSFetchRequest *)fetchRequestByOrder:(NSString *)orderString andQuery:(NSString* )queryString, ... {
   NSFetchRequest *request = [self defaultFetchRequest];

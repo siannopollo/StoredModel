@@ -96,4 +96,11 @@
   dogs = [Dog find:@"createdAt > %@", [twoDaysAgo queryFormat]];
   STAssertTrue(1 == [dogs count], @"");
 }
+
+- (void)testInitWithDictionary {
+  [Dog deleteAll];
+  
+  dog = [Dog new:[NSDictionary dictionaryWithObjectsAndKeys:@"Fido", @"name", nil]];
+  STAssertTrue([dog.name isEqualToString:@"Fido"], @"name is %@", dog.name);
+}
 @end
