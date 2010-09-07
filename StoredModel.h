@@ -51,6 +51,7 @@ static NSManagedObjectContext *storedModelContext = nil;
 #pragma mark Instance methods
 - (void)save;
 - (void)destroy;
+- (int)persistenceID;
 @end
 
 // Doing this because NSPredicate does some munging of dates

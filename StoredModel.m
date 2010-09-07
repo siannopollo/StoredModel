@@ -202,6 +202,16 @@
   }
 }
 
+- (int)persistenceID {
+  NSArray *components = [[[[self objectID] URIRepresentation] path] componentsSeparatedByString:@"/"];
+  NSCharacterSet *charSet = [NSCharacterSet decimalDigitCharacterSet];
+  NSScanner *scanner = [NSScanner scannerWithString:[components objectAtIndex:[components count]-1]];
+  [scanner scanUpToCharactersFromSet:charSet intoString:nil];
+  int pID;
+  [scanner scanInt:&pID];
+  return pID;
+}
+
 - (void)dealloc {
   [super dealloc];
 }

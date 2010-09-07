@@ -103,4 +103,12 @@
   dog = [Dog new:[NSDictionary dictionaryWithObjectsAndKeys:@"Fido", @"name", nil]];
   STAssertTrue([dog.name isEqualToString:@"Fido"], @"name is %@", dog.name);
 }
+
+- (void)testId {
+  [dog save];
+  NSString *path = [[[dog objectID] URIRepresentation] path];
+  NSArray *components = [path componentsSeparatedByString:@"/"];
+  STAssertTrue([[components objectAtIndex:[components count]-1] isEqualToString:@"p1"], @"");
+  STAssertTrue([dog persistenceID] == 1, @"id is %i", [dog persistenceID]);
+}
 @end
