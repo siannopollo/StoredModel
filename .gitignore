@@ -1,1 +1,9 @@
-build/StoredModel.build
+build/
+*.pyc
+*~.nib/
+*.mode1v3
+*.pbxuser
+*.perspective
+*.perspectivev3
+.DS_Store
+

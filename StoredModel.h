@@ -4,9 +4,6 @@
 
 #import <CoreData/CoreData.h>
 
-// This causes warnings, but nothing to worry about :-)
-static NSManagedObjectContext *storedModelContext = nil;
-
 @interface StoredModel : NSManagedObject
 
 + (void)setContext:(NSManagedObjectContext *)newContext;

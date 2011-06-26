@@ -12,4 +12,5 @@
   NSManagedObjectContext *context;
 }
 
+//- (NSString *)applicationSupportDirectory;
 @end

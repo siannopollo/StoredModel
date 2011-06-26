@@ -14,10 +14,8 @@
   context = [[NSManagedObjectContext alloc] init];
   [context setPersistentStoreCoordinator:coordinator];
   
-  NSString *basePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]
-                        stringByDeletingLastPathComponent];
-  NSURL *storeUrl = [NSURL fileURLWithPath:[basePath stringByAppendingPathComponent: @"User/Documents/test.sqlite"]];
-	
+  NSURL *storeUrl = [NSURL fileURLWithPath: [NSTemporaryDirectory() stringByAppendingPathComponent: @"stored_model_test"]];
+  
   NSError *error = nil;
   [[NSFileManager defaultManager] removeItemAtPath:storeUrl.path error:&error];
   if (![coordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeUrl options:nil error:&error]) {
@@ -26,5 +24,4 @@
   
   [StoredModel setContext:context];
 }
-
 @end

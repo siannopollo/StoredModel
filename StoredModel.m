@@ -4,6 +4,8 @@
 
 #import "StoredModel.h"
 
+static NSManagedObjectContext *storedModelContext = nil;
+
 @implementation StoredModel
 
 #pragma mark Context access methods
