@@ -1,10 +1,10 @@
 h1. StoredModel
 
-A friendlier interface for using CoreData in a Cocoa application. Borrows mostly from easy-to-use syntax in the Ruby ActiveRecord library.
+A friendlier interface for using CoreData in Cocoa and iOS applications. Borrows mostly from easy-to-use syntax in the Ruby ActiveRecord library.
 
 h3. Why?
 
-Because I looked at all the example code for using CoreData and thought there had to be a better way of saving data than passing a stupid ManagedObjectContext around my whole application. Turns out, there is! This library greatly reduces the verbosity of working with NSManagedObjects, and should be pretty familiar to anyone who has used Ruby on Rails.
+Because I looked at all the example code for using CoreData and thought there had to be a better way of saving data than passing a ManagedObjectContext around my whole application. Turns out, there is! This library greatly reduces the verbosity of working with NSManagedObjects, and should be pretty familiar to anyone who has used Ruby on Rails.
 
 h3. Installation
 
@@ -54,3 +54,7 @@ Pull requests are welcomed and encouraged.
 h3. License
 
 See the LICENSE.
+
+h3. Todo
+
+* See about supporting multiple ManagedObjectContexts
