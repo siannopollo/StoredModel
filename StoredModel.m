@@ -26,7 +26,8 @@ static NSManagedObjectContext *storedModelContext = nil;
 }
 
 + (id)new {
-  return [NSEntityDescription insertNewObjectForEntityForName:[self name] inManagedObjectContext:[self context]];
+  NSEntityDescription *description = [NSEntityDescription entityForName:[self name] inManagedObjectContext:[self context]];
+  return [[self alloc] initWithEntity:description insertIntoManagedObjectContext:[self context]];
 }
 
 + (id)new:(NSDictionary *)dictionary {
