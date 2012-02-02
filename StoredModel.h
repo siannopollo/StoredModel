@@ -22,12 +22,14 @@
 + (NSMutableArray *)findByOrder:(NSString *)orderString andQuery:(NSString *)queryString, ...;
 + (NSMutableArray *)findByOrder:(NSString *)orderString;
 + (NSMutableArray *)find:(NSString *)queryString, ...;
++ (NSMutableArray *)findByKey:(NSString *)key withValue:(id)value;
 + (NSMutableArray *)all;
 
 #pragma mark - Single record finding
 + (id)findFirstByOrder:(NSString *)orderString andQuery:(NSString *)queryString, ...;
 + (id)findFirstByOrder:(NSString *)orderString;
 + (id)findFirst:(NSString *)queryString, ...;
++ (id)findFirstByKey:(NSString *)key withValue:(id)value;
 + (id)findFirst;
 + (id)findByID:(NSManagedObjectID *)objectID;
 

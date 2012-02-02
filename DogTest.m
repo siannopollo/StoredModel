@@ -111,4 +111,31 @@
   STAssertTrue([[components objectAtIndex:[components count]-1] isEqualToString:@"p1"], @"");
   STAssertTrue([dog persistenceID] == 1, @"id is %i", [dog persistenceID]);
 }
+
+- (void)testKeyValueFinding {
+  NSDate *oneDayAgo = [NSDate dateWithTimeIntervalSinceNow:-86400];
+  NSDate *twoDaysAgo = [NSDate dateWithTimeIntervalSinceNow:-86400*2];
+  
+  [Dog deleteAll];
+  dog = [Dog new];
+  dog.name = @"Wishbone";
+  dog.createdAt = oneDayAgo;
+  Dog *otherDog = [Dog new];
+  otherDog.name = @"Scruff";
+  otherDog.createdAt = twoDaysAgo;
+  
+  [dog save]; [otherDog save];
+  
+  dog = [[Dog findByKey:@"name" withValue:@"Wishbone"] objectAtIndex:0];
+  STAssertTrue([dog.name isEqualToString:@"Wishbone"], @"");
+  STAssertEqualObjects(dog.createdAt, oneDayAgo, @"");
+  
+  dog = [[Dog findByKey:@"createdAt" withValue:twoDaysAgo] objectAtIndex:0];
+  STAssertTrue([dog.name isEqualToString:@"Scruff"], @"");
+  STAssertEqualObjects(dog.createdAt, twoDaysAgo, @"");
+  
+  dog = [Dog findFirstByKey:@"createdAt" withValue:oneDayAgo];
+  STAssertTrue([dog.name isEqualToString:@"Wishbone"], @"");
+  STAssertEqualObjects(dog.createdAt, oneDayAgo, @"");
+}
 @end

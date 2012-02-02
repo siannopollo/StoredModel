@@ -74,6 +74,8 @@ static NSManagedObjectContext *storedModelContext = nil;
 
 #pragma mark -
 #pragma mark Querying methods
+#pragma mark - Collection finding
+
 + (NSMutableArray *)findByOrder:(NSString *)orderString andQuery:(NSString *)queryString, ... {
   va_list argumentList;
 	va_start(argumentList, queryString);
@@ -94,9 +96,19 @@ static NSManagedObjectContext *storedModelContext = nil;
   return [self _findResults:[self fetchRequest:sqlString]];
 }
 
++ (NSMutableArray *)findByKey:(NSString *)key withValue:(id)value {
+  NSString *sqlString;
+  if ([value isKindOfClass:[NSDate class]]) sqlString = [NSString stringWithFormat:@"%@ = %@", key, [(NSDate *)value queryFormat]];
+  else sqlString = [NSString stringWithFormat:@"%@ = '%@'", key, value];
+  NSLog(@"sql = %@", sqlString);
+  return [self find:sqlString];
+}
+
 + (NSMutableArray *)all {
   return [self _findResults:[self defaultFetchRequest]];
 }
+
+#pragma mark - Single record finding
 
 + (id)findFirstByOrder:(NSString *)orderString andQuery:(NSString *)queryString, ... {
   va_list argumentList;
@@ -122,6 +134,12 @@ static NSManagedObjectContext *storedModelContext = nil;
 	else return  nil;
 }
 
++ (id)findFirstByKey:(NSString *)key withValue:(id)value {
+  NSArray *objects = [self findByKey:key withValue:value];
+  if ([objects count] > 0) return [objects objectAtIndex:0];
+	else return  nil;
+}
+
 + (id)findFirst {
   NSMutableArray *objects = [self all];
   if ([objects count] > 0) return [objects objectAtIndex:0];
@@ -131,6 +149,8 @@ static NSManagedObjectContext *storedModelContext = nil;
 + (id)findByID:(NSManagedObjectID *)objectID {
   return [[self context] objectRegisteredForID:objectID];
 }
+
+#pragma mark - Counting
 
 + (NSNumber *)count:(NSString *)queryString, ... {
   va_list argumentList;
