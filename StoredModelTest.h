@@ -11,6 +11,4 @@
   NSPersistentStoreCoordinator *coordinator;
   NSManagedObjectContext *context;
 }
-
-//- (NSString *)applicationSupportDirectory;
 @end

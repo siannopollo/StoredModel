@@ -4,7 +4,7 @@ A friendlier interface for using CoreData in Cocoa and iOS applications. Borrows
 
 h3. Why?
 
-Because I looked at all the example code for using CoreData and thought there had to be a better way of saving data than passing a ManagedObjectContext around my whole application. Turns out, there is! This library greatly reduces the verbosity of working with NSManagedObjects, and should be pretty familiar to anyone who has used Ruby on Rails.
+Because I looked at all the example code for using CoreData and thought there had to be a better way of saving data than passing a NSManagedObjectContext around my whole application. Turns out, there is! This library greatly reduces the verbosity of working with NSManagedObjects, and should be pretty familiar to anyone who has used Ruby on Rails.
 
 h3. Installation
 
@@ -24,7 +24,7 @@ You should now be able to @#import "StoredModel.h"@ into any of your project fil
 
 h3. Usage
 
-Most CoreData example code has a ManagedObjectContext created in the application delegate, and that is then passed to a root view controller so that thing can pass the context around like a joint at a Snoop Dogg concert. Instead of that, you need only deal with the managedObjectContext *once*. Your code in your application delegate should look something like this:
+Most CoreData example code has a NSManagedObjectContext created in the application delegate, and that is then passed to a root view controller so that thing can pass the context around like a joint at a Snoop Dogg concert. Instead of that, you need only deal with the managedObjectContext *once*. Your code in your application delegate should look something like this:
 
 <pre>
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
@@ -57,4 +57,4 @@ See the LICENSE.
 
 h3. Todo
 
-* See about supporting multiple ManagedObjectContexts
+* See about supporting multiple NSManagedObjectContexts
