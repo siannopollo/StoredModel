@@ -14,9 +14,12 @@
 }
 
 - (void)testSaving {
-  [dog save];
+  STAssertTrue([dog save], @"");
   STAssertTrue([[Dog all] count] == 1, @"");
   STAssertTrue([[Dog count] intValue] == 1, @"");
+  
+  dog = [Dog new];
+  STAssertFalse([dog save], @""); // name is required
 }
 
 - (void)testSettingAttributes {
@@ -72,7 +75,8 @@
 - (void)testDestroying {
   [dog save];
   STAssertEquals(1, [[Dog count] intValue], @"");
-  [dog destroy];
+  
+  STAssertTrue([dog destroy], @"");
   STAssertEquals(0, [[Dog count] intValue], @"");
 }
 

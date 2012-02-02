@@ -6,6 +6,12 @@
 
 static NSManagedObjectContext *storedModelContext = nil;
 
+@interface StoredModel (private)
++ (NSMutableArray *)_findResults:(NSFetchRequest *)request;
++ (NSNumber *)_countResults:(NSFetchRequest *)request;
++ (NSArray *)_sortDescriptorsFromOrderString:(NSString *)orderString;
+@end
+
 @implementation StoredModel
 
 #pragma mark Context access methods
@@ -163,6 +169,8 @@ static NSManagedObjectContext *storedModelContext = nil;
   return [self _countResults:[self defaultFetchRequest]];
 }
 
+#pragma mark -
+
 + (void)deleteAll {
   for (id object in [self all]) [[self context] deleteObject:object];
   
@@ -172,8 +180,7 @@ static NSManagedObjectContext *storedModelContext = nil;
   }
 }
 
-#pragma mark -
-#pragma mark Protected methods
+#pragma mark - Private methods
 + (NSMutableArray *)_findResults:(NSFetchRequest *)request {
   NSError *error = nil;
   NSMutableArray *mutableFetchResults = [[[self context] executeFetchRequest:request error:&error] mutableCopy];
@@ -206,23 +213,34 @@ static NSManagedObjectContext *storedModelContext = nil;
   return result;
 }
 
-#pragma mark -
-#pragma mark Instance Methods
+#pragma mark - Instance Methods
 // This ensures that after we save an object, it is up to date with data in the persistent store
-- (void)save {
+- (BOOL)save {
   NSError *error = nil;
+  BOOL success = YES;
+  
   if (![[self context] save:&error]) {
     NSLog(@">>>>>> Error saving: %@", error);
+    success = NO;
   }
+  
+  [[self context] refreshObject:self mergeChanges:NO];
+  
+  return success;
 }
 
-- (void)destroy {
+- (BOOL)destroy {
   NSError *error = nil;
+  BOOL success = YES;
   NSManagedObjectContext *context = [self context];
+  
   [context deleteObject:self];
   if (![context save:&error]) {
     NSLog(@">>>>>> Error destroying: %@", error);
+    success = NO;
   }
+  
+  return success;
 }
 
 - (int)persistenceID {
@@ -233,9 +251,5 @@ static NSManagedObjectContext *storedModelContext = nil;
   int pID;
   [scanner scanInt:&pID];
   return pID;
-}
-
-- (void)dealloc {
-  [super dealloc];
 }
 @end
